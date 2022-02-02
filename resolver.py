@@ -117,7 +117,7 @@ while not done:
                 available_words = letter_not_in(available_words, letter)
 
     if "Félicitations" in body.text:
-        print(f"Word found in {x-1} shot(s)")
+        print(f"Word found in {x} shot(s)")
         done = True
 
     x += 1
