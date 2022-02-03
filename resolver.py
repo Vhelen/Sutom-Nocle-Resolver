@@ -1,3 +1,5 @@
+import sys
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from time import sleep
@@ -57,10 +59,13 @@ driver = webdriver.Firefox()
 driver.get("https://sutom.nocle.fr/")
 sleep(2)
 
+driver.find_element(By.ID, "panel-fenetre-bouton-fermeture").click()
+
 word_table = driver.find_element(By.XPATH, "/html/body/div/div[3]/table")
 first_letter = word_table.text[0]
+nb_letter = len(driver.find_element(By.XPATH, "/html/body/div/div[3]/table/tr[1]").find_elements(By.TAG_NAME, "td"))
 
-available_words = [idx for idx in words_list if len(idx) == 7]
+available_words = [idx for idx in words_list if len(idx) == nb_letter]
 available_words = [idx for idx in available_words if idx[0].lower() == first_letter.lower()]
 
 done = False
